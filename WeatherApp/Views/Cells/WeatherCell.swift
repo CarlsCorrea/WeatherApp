@@ -45,9 +45,9 @@ final class WeatherCell: UITableViewCell {
     func configureCell(dailyWeather:Daily){
         let date = Date(timeIntervalSince1970: Double(dailyWeather.dt))
         labelDay.text = date.dayOfTheWeek()?.capitalizingFirstLetter() ?? ""
-        labelMin.text = "Min: \(Int(dailyWeather.temp.min))"
-        labelMax.text = "Max: \(Int(dailyWeather.temp.max))"
-        labelAverage.text = "\(Int(dailyWeather.temp.day))"
+        labelMin.text = "Min: \(Int(dailyWeather.temp.min)) ℃"
+        labelMax.text = "Max: \(Int(dailyWeather.temp.max)) ℃"
+        labelAverage.text = "\(Int(dailyWeather.temp.day)) ℃"
         
         if let dailyFirst = dailyWeather.weather.first {
             WeatherEnum.allCases.forEach {
@@ -87,9 +87,6 @@ extension WeatherCell: ViewCode {
         
         labelAverage.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
         labelAverage.trailingAnchor.constraint(equalTo: imageViewWeather.leadingAnchor, constant: -10).isActive = true
-        
-//        labelAverage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
-//        labelAverage.leadingAnchor.constraint(equalTo: labelMin.trailingAnchor, constant: 10).isActive = true
     }
     
     func aditionalSetup() {
